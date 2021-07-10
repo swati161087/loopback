@@ -4,18 +4,22 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
+  del, get,
+  getModelSchemaRef, param,
+
+
+  patch, post,
+
+
+
+
   put,
-  del,
+
   requestBody,
-  response,
+  response
 } from '@loopback/rest';
 import {Students} from '../models';
 import {StudentRepository} from '../repositories';
@@ -37,7 +41,7 @@ export class StudentController {
         'application/json': {
           schema: getModelSchemaRef(Students, {
             title: 'NewStudents',
-            
+
           }),
         },
       },
@@ -55,6 +59,7 @@ export class StudentController {
   async count(
     @param.where(Students) where?: Where<Students>,
   ): Promise<Count> {
+    console.log('adding some lines here');
     return this.studentRepository.count(where);
   }
 
@@ -73,6 +78,7 @@ export class StudentController {
   async find(
     @param.filter(Students) filter?: Filter<Students>,
   ): Promise<Students[]> {
+    console.log('adding some lines here');
     return this.studentRepository.find(filter);
   }
 
